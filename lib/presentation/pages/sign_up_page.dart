@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
 import 'package:stoy/presentation/providers/auth/sign_up/sign_up_provider.dart';
 import 'package:stoy/presentation/widgets/auth_page_title.dart';
@@ -27,7 +28,7 @@ class SignUpPage extends ConsumerWidget {
             AuthTextField(
               label: 'Email',
               password: false,
-              placeholder: 'Enter your email',
+              placeholder: 'メールアドレスを入力してください',
               onChangeText: notifier.onChangedEmail,
             ),
             const SizedBox(height: 16),
@@ -53,7 +54,29 @@ class SignUpPage extends ConsumerWidget {
               },
               isLoading: state.isLoading,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 4),
+            Container(
+              width: 286.w,
+              alignment: Alignment.center,
+              child: Row(
+                children: [
+                  const Text("Already have account?"),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      textStyle: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w700),
+                    ),
+                    onPressed: () {
+                      notifier.goToSignInPage(context);
+                    },
+                    child: const Text(
+                      'SignIn',
+                      style: TextStyle(color: AppColor.primaryColor),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

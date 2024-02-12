@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stoy/features/auth/domain/use_cases/sign_in_use_case.dart';
 import 'package:stoy/presentation/providers/auth/auth_state.dart';
@@ -30,5 +31,9 @@ class SignInNotifier extends StateNotifier<SignInState> {
 
   void onChangedPassword(String value) {
     state = state.copyWith(password: value);
+  }
+
+  void goToSignUpPage(BuildContext context) {
+    Navigator.pushNamedAndRemoveUntil(context, '/signUp', (route) => false);
   }
 }

@@ -2,8 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stoy/app_router.dart';
 import 'package:stoy/firebase_options.dart';
-import 'package:stoy/presentation/pages/sign_up_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +23,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignUpPage(),
+        initialRoute: '/',
+        home: const Navigator(
+          onGenerateRoute: AppRouter.generateRoute,
+        ),
       ),
     );
   }

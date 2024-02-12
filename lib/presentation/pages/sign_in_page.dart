@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
 import 'package:stoy/presentation/providers/auth/sign_in/sign_in_provider.dart';
 import 'package:stoy/presentation/widgets/auth_page_title.dart';
@@ -23,21 +24,21 @@ class SignInPage extends ConsumerWidget {
             const AuthPageTitle(
                 title: 'Login',
                 description: 'Welcome Back , You have been missed !'),
-            const SizedBox(height: 30),
+            const SizedBox(height: 16),
             AuthTextField(
-              label: 'Email',
+              label: 'メールアドレス',
               password: false,
-              placeholder: 'Enter your email',
+              placeholder: 'メールアドレスを入力してください',
               onChangeText: notifier.onChangedEmail,
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 16),
             AuthTextField(
               label: 'Password',
               placeholder: 'Enter your password',
               password: true,
               onChangeText: notifier.onChangedPassword,
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 16),
             OutlinedWideButton(
               label: 'signIn',
               color: AppColor.primaryColor,
@@ -46,7 +47,29 @@ class SignInPage extends ConsumerWidget {
               },
               isLoading: state.isLoading,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 16),
+            Container(
+              width: 286.w,
+              alignment: Alignment.center,
+              child: Row(
+                children: [
+                  const Text("Don't have account?"),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      textStyle: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w700),
+                    ),
+                    onPressed: () {
+                      notifier.goToSignUpPage(context);
+                    },
+                    child: const Text(
+                      'SignUp',
+                      style: TextStyle(color: AppColor.primaryColor),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

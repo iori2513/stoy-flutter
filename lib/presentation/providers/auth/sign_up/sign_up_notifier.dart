@@ -40,4 +40,8 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
   void onChangeUsername(String value) {
     state = state.copyWith(username: value);
   }
+
+  void goToSignInPage(BuildContext context) {
+    Navigator.pushNamedAndRemoveUntil(context, '/signIn', (route) => false);
+  }
 }
