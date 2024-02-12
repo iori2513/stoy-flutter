@@ -13,10 +13,10 @@ class AuthUser extends Equatable {
     this.photoUrl,
   });
 
-  static const AuthUser empty =
+  static const emptyAuthUser =
       AuthUser(userId: '', email: '', username: '', photoUrl: '');
 
-  bool get isEmpty => this == AuthUser.empty;
+  bool get isEmpty => this == AuthUser.emptyAuthUser;
 
   @override
   List<Object?> get props => [userId, email, username, photoUrl];

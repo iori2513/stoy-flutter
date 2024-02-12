@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fb_auth;
 
 import '../models/auth_user_model.dart';
@@ -20,15 +21,25 @@ class AuthRemoteDataSource {
   Future<AuthUserModel> signUp({
     required String email,
     required String password,
+    required String username,
   }) async {
     try {
       fb_auth.UserCredential cred = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
       final user = cred.user;
-      if (user != null) {
-        return AuthUserModel.fromFirebaseAuthUser(user);
+      if (user == null) {
+        throw Exception('Error SignUp: no user');
       }
-      throw Exception('Error SignUp: no user');
+      final authUser = AuthUserModel(
+        userId: user.uid,
+        username: username,
+        email: user.email ?? '',
+      );
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .set(authUser.toJson());
+      return authUser;
     } catch (error) {
       throw Exception('Error SignUp: $error');
     }

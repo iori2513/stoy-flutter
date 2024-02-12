@@ -3,11 +3,15 @@ import 'package:stoy/features/auth/domain/repositories/auth_repository.dart';
 import '../entities/auth_user.dart';
 
 class SignUpUseCase {
-  final AuthRepository authUserRepository;
+  final AuthRepository authRepository;
 
-  SignUpUseCase({required this.authUserRepository});
+  SignUpUseCase({required this.authRepository});
 
-  Future<AuthUser> call({required String email, required String password}) {
-    return authUserRepository.signUp(email: email, password: password);
+  Future<AuthUser> call(
+      {required String email,
+      required String password,
+      required String username}) {
+    return authRepository.signUp(
+        email: email, password: password, username: username);
   }
 }

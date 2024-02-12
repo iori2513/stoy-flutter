@@ -1,11 +1,11 @@
 import 'package:stoy/features/auth/domain/repositories/auth_repository.dart';
 
 class SignOutUseCase {
-  final AuthRepository authUserRepository;
+  final AuthRepository authRepository;
 
-  SignOutUseCase({required this.authUserRepository});
+  SignOutUseCase({required this.authRepository});
 
   Future<void> call() async {
-    return authUserRepository.signOut();
+    return authRepository.signOut();
   }
 }

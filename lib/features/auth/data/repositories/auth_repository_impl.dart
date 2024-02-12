@@ -14,7 +14,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Stream<AuthUser> get authUser {
     return remoteDataSource.user.map((user) {
       if (user == null) {
-        return AuthUser.empty;
+        return AuthUser.emptyAuthUser;
       }
       return user.toEntity();
     });
@@ -35,9 +35,11 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<AuthUser> signUp(
-      {required String email, required String password}) async {
-    final authModel =
-        await remoteDataSource.signUp(email: email, password: password);
+      {required String email,
+      required String password,
+      required String username}) async {
+    final authModel = await remoteDataSource.signUp(
+        email: email, password: password, username: username);
     return authModel.toEntity();
   }
 }
