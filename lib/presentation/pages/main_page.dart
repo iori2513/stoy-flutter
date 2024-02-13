@@ -4,6 +4,34 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:stoy/constants/app_color.dart';
 import 'package:stoy/presentation/pages/home_page.dart';
 import 'package:stoy/presentation/pages/profile_page.dart';
+import 'package:stoy/presentation/pages/record_page.dart';
+
+List<Widget> _buildScreens() {
+  return [const HomePage(), const RecordPage(), const ProfilePage()];
+}
+
+List<PersistentBottomNavBarItem> _navBarsItems() {
+  return [
+    PersistentBottomNavBarItem(
+      icon: const Icon(Icons.home),
+      title: ("Home"),
+      activeColorPrimary: AppColor.primaryColor,
+      inactiveColorPrimary: AppColor.grey,
+    ),
+    PersistentBottomNavBarItem(
+      icon: const Icon(Icons.calendar_month),
+      title: ("Record"),
+      activeColorPrimary: AppColor.primaryColor,
+      inactiveColorPrimary: AppColor.grey,
+    ),
+    PersistentBottomNavBarItem(
+      icon: const Icon(Icons.person),
+      title: ("Profile"),
+      activeColorPrimary: AppColor.primaryColor,
+      inactiveColorPrimary: AppColor.grey,
+    ),
+  ];
+}
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -72,25 +100,4 @@ class _MainPageState extends ConsumerState<MainPage> {
       ),
     );
   }
-}
-
-List<Widget> _buildScreens() {
-  return [const HomePage(), const ProfilePage()];
-}
-
-List<PersistentBottomNavBarItem> _navBarsItems() {
-  return [
-    PersistentBottomNavBarItem(
-      icon: const Icon(Icons.home),
-      title: ("Home"),
-      activeColorPrimary: AppColor.primaryColor,
-      inactiveColorPrimary: AppColor.grey,
-    ),
-    PersistentBottomNavBarItem(
-      icon: const Icon(Icons.person),
-      title: ("Profile"),
-      activeColorPrimary: AppColor.primaryColor,
-      inactiveColorPrimary: AppColor.grey,
-    ),
-  ];
 }
