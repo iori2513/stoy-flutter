@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_week/flutter_calendar_week.dart';
 import 'package:intl/intl.dart';
 
+import '../../constants/app_color.dart';
+
 class RecordPage extends StatefulWidget {
   const RecordPage({super.key});
 
@@ -14,8 +16,19 @@ class _RecordPageState extends State<RecordPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('STOY',
+            style: TextStyle(
+                color: AppColor.primaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20)),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {},
+        ),
+      ),
+      body: Column(
         children: [
           CalendarWeek(
             controller: controller,

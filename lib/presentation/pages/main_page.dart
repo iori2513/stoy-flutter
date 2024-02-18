@@ -51,17 +51,6 @@ class _MainPageState extends ConsumerState<MainPage> {
   Widget build(BuildContext context) {
     // final selectedTabItem = _items[selectedIndex];
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('STOY',
-            style: TextStyle(
-                color: AppColor.primaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 20)),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-      ),
       body: PersistentTabView(
         context,
         controller: _controller,
