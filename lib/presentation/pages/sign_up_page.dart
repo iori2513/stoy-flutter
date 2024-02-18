@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
 import 'package:stoy/presentation/providers/auth/sign_up/sign_up_provider.dart';
-import 'package:stoy/presentation/widgets/auth_page_title.dart';
+import 'package:stoy/presentation/widgets/auth/auth_page_title.dart';
 import 'package:stoy/presentation/widgets/outlined_button.dart';
 
-import '../widgets/auth_text_field.dart';
+import '../widgets/auth/auth_text_field.dart';
 
 class SignUpPage extends ConsumerWidget {
   const SignUpPage({super.key});
