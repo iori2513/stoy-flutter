@@ -1,6 +1,5 @@
-import 'package:stoy/features/auth/domain/repositories/auth_repository.dart';
-
-import '../entities/auth_user.dart';
+import 'package:stoy/domain/entities/auth_user.dart';
+import 'package:stoy/domain/repositories/auth_repository.dart';
 
 class SignUpUseCase {
   final AuthRepository authRepository;

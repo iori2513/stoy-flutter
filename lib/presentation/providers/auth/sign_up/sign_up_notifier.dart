@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:stoy/features/auth/domain/use_cases/sign_up_use_case.dart';
+import 'package:stoy/domain/use_cases/sign_up_use_case.dart';
 import 'package:stoy/presentation/providers/auth/auth_state.dart';
 import 'package:stoy/presentation/providers/auth/sign_up/sign_up_state.dart';
 

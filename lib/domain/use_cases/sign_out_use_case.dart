@@ -1,4 +1,4 @@
-import 'package:stoy/features/auth/domain/repositories/auth_repository.dart';
+import 'package:stoy/domain/repositories/auth_repository.dart';
 
 class SignOutUseCase {
   final AuthRepository authRepository;

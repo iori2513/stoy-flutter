@@ -1,5 +1,5 @@
-import 'package:stoy/features/auth/domain/entities/auth_user.dart';
-import 'package:stoy/features/auth/domain/repositories/auth_repository.dart';
+import 'package:stoy/domain/entities/auth_user.dart';
+import 'package:stoy/domain/repositories/auth_repository.dart';
 
 import '../data_sources/auth_remote_data_source.dart';
 
