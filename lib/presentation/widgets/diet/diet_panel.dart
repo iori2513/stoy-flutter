@@ -12,7 +12,8 @@ class DietPanel extends StatelessWidget {
       width: 327.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.h),
-        color: AppColor.borderColor,
+        border: Border.all(color: AppColor.borderColor),
+        color: AppColor.backGroundGrey,
       ),
       child: Row(
         children: [
