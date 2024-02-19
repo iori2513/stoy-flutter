@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:stoy/domain/entities/auth_user.dart';
+import 'package:stoy/domain/entities/auth/auth_user.dart';
 
 class AuthState extends Equatable {
   final AuthUser? user;

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fb_auth;
 
-import '../models/auth_user_model.dart';
+import '../../models/auth/auth_user_model.dart';
 
 class AuthRemoteDataSource {
   AuthRemoteDataSource({fb_auth.FirebaseAuth? firebaseAuth})

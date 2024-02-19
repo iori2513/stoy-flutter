@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stoy/constants/app_color.dart';
-import 'package:stoy/presentation/pages/diet_create_page.dart';
+import 'package:stoy/presentation/pages/diet/diet_create_page.dart';
 import 'package:stoy/presentation/widgets/diet/diet_panel.dart';
 
 class HomePage extends StatelessWidget {

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:stoy/constants/app_color.dart';
-import 'package:stoy/presentation/pages/home_page.dart';
-import 'package:stoy/presentation/pages/profile_page.dart';
-import 'package:stoy/presentation/pages/record_page.dart';
+import 'package:stoy/presentation/pages/core/home_page.dart';
+import 'package:stoy/presentation/pages/core/profile_page.dart';
+import 'package:stoy/presentation/pages/core/record_page.dart';
 
 List<Widget> _buildScreens() {
   return [const HomePage(), const RecordPage(), const ProfilePage()];

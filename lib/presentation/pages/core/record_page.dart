@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_week/flutter_calendar_week.dart';
 import 'package:intl/intl.dart';
-
-import '../../constants/app_color.dart';
+import 'package:stoy/constants/app_color.dart';
 
 class RecordPage extends StatefulWidget {
   const RecordPage({super.key});

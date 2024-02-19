@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fb_auth;
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stoy/domain/entities/auth_user.dart';
+import 'package:stoy/domain/entities/auth/auth_user.dart';
 
 part 'auth_user_model.g.dart';
 
