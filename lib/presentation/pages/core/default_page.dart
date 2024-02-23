@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:stoy/presentation/providers/auth/auth_provider.dart';
+import 'package:stoy/presentation/providers/shared/auth/auth_provider.dart';
 
 class DefaultPage extends ConsumerStatefulWidget {
   const DefaultPage({Key? key}) : super(key: key);
