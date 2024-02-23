@@ -5,8 +5,8 @@ import 'package:stoy/domain/repositories/auth/auth_repository.dart';
 import 'package:stoy/domain/use_cases/auth/sign_in_use_case.dart';
 import 'package:stoy/domain/use_cases/auth/sign_out_use_case.dart';
 import 'package:stoy/domain/use_cases/auth/sign_up_use_case.dart';
-import 'package:stoy/presentation/providers/auth/auth_notifier.dart';
-import 'package:stoy/presentation/providers/auth/auth_state.dart';
+import 'package:stoy/presentation/providers/shared/auth/auth_notifier.dart';
+import 'package:stoy/presentation/providers/shared/auth/auth_state.dart';
 
 final authRemoteDataSourceProvider = Provider<AuthRemoteDataSource>((ref) {
   return AuthRemoteDataSource();

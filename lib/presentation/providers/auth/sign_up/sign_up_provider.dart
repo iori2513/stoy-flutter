@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:stoy/presentation/providers/auth/auth_provider.dart';
 import 'package:stoy/presentation/providers/auth/sign_up/sign_up_notifier.dart';
 import 'package:stoy/presentation/providers/auth/sign_up/sign_up_state.dart';
+import 'package:stoy/presentation/providers/shared/auth/auth_provider.dart';
 
 final signUpNotifierProvider =
     StateNotifierProvider<SignUpNotifier, SignUpState>((ref) {

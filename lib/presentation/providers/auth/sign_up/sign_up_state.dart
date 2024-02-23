@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:stoy/presentation/providers/auth/auth_state.dart';
+import 'package:stoy/presentation/providers/shared/auth/auth_state.dart';
 
 class SignUpState extends Equatable {
   final AuthState authState;
