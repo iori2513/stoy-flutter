@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stoy/photo_manager.dart';
+import 'package:stoy/image_picker_manager.dart';
 import 'package:stoy/presentation/widgets/common_text_field.dart';
 import 'package:stoy/presentation/widgets/input_num_field.dart';
 

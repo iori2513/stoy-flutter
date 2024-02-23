@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
-import 'package:stoy/photo_manager.dart';
+import 'package:stoy/image_picker_manager.dart';
 
 class DietPanel extends StatelessWidget {
   const DietPanel({super.key});
