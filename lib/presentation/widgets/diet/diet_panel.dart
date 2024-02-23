@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
+import 'package:stoy/image_picker_manager.dart';
 
 class DietPanel extends StatelessWidget {
   const DietPanel({super.key});
@@ -25,7 +26,8 @@ class DietPanel extends StatelessWidget {
             width: 82.w,
             decoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(15.h)),
-            child: Image.network('https://picsum.photos/250?image=9'),
+            child: Image.network(ImagePickerManager.getDefaultDownloadImageUrl(
+                ImageCategory.diet)),
           ),
           SizedBox(
             width: 10.w,
