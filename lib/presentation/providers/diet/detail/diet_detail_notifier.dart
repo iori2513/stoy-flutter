@@ -1,15 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stoy/domain/entities/diet/diet.dart';
 import 'package:stoy/domain/entities/diet/nutrition.dart';
 import 'package:stoy/domain/use_cases/diet/add_diet_use_case.dart';
 import 'package:stoy/presentation/providers/diet/detail/diet_detail_state.dart';
+import 'package:stoy/utils/time_picker.dart';
 
 class DietDetailNotifier extends StateNotifier<DietDetailState> {
   final AddDietUseCase addDietUseCase;
 
   DietDetailNotifier(super._state, {required this.addDietUseCase, Diet? diet}) {
     if (diet != null) {
-      state = DietDetailState(nutrition: diet.nutrition, date: diet.date);
+      state = DietDetailState(
+          nutrition: diet.nutrition, date: diet.date, time: TimeOfDay.now());
     }
   }
 
@@ -46,5 +49,14 @@ class DietDetailNotifier extends StateNotifier<DietDetailState> {
             protein: protein ?? state.nutrition.protein,
             fat: fat ?? state.nutrition.fat,
             carbohydrates: carbohydrates ?? state.nutrition.carbohydrates));
+  }
+
+  void openPickTimeDialog(BuildContext context) async {
+    final time = await pickTime(context, state.time);
+    print(time);
+    if (time != null) {
+      state = state.copyWith(time: time);
+    }
+    print(state);
   }
 }

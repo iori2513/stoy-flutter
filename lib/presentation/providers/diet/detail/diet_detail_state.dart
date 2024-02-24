@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stoy/domain/entities/diet/nutrition.dart';
 
@@ -10,6 +11,7 @@ class DietDetailState with _$DietDetailState {
     @Default('') String content,
     required DateTime date,
     required Nutrition nutrition,
+    required TimeOfDay time,
     @Default(false) bool isLoading,
     String? errorMessage,
   }) = _DietDetailState;
@@ -17,6 +19,7 @@ class DietDetailState with _$DietDetailState {
   factory DietDetailState.initial() => DietDetailState(
         nutrition: Nutrition.empty(),
         date: DateTime.now(),
+        time: TimeOfDay.now(),
       );
 }
 

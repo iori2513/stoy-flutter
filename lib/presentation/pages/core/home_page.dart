@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => DietDetailPage(
-                          diet: Diet.empty(''),
+                          Diet.empty(''),
                         )));
           },
           child: const DietPanel()),

@@ -3,10 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
 import 'package:stoy/domain/entities/diet/diet.dart';
-import 'package:stoy/presentation/providers/diet/detail/diet_detail_notifier.dart';
-import 'package:stoy/presentation/providers/diet/detail/diet_detail_state.dart';
+import 'package:stoy/presentation/providers/diet/detail/diet_detail_provider.dart';
 import 'package:stoy/presentation/providers/shared/auth/auth_provider.dart';
-import 'package:stoy/presentation/providers/shared/diet/diet_provider.dart';
 import 'package:stoy/presentation/widgets/common_text_field.dart';
 import 'package:stoy/presentation/widgets/input_num_field.dart';
 import 'package:stoy/presentation/widgets/outlined_button.dart';
@@ -14,19 +12,12 @@ import 'package:stoy/presentation/widgets/outlined_button.dart';
 class DietDetailPage extends ConsumerWidget {
   final Diet diet;
 
-  DietDetailPage({super.key, required this.diet});
-
-  late final dietCreateProvider =
-      StateNotifierProvider<DietDetailNotifier, DietDetailState>((ref) {
-    final addDietUseCase = ref.watch(addDietUseCaseProvider);
-    final state = DietDetailState(nutrition: diet.nutrition, date: diet.date);
-    return DietDetailNotifier(state, addDietUseCase: addDietUseCase);
-  });
+  const DietDetailPage(this.diet, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(dietCreateProvider);
-    final notifier = ref.watch(dietCreateProvider.notifier);
+    final state = ref.watch(dietDetailProvider(diet));
+    final notifier = ref.watch(dietDetailProvider(diet).notifier);
     final user = ref.watch(authUserProvider);
     return Scaffold(
       appBar: AppBar(
@@ -66,6 +57,27 @@ class DietDetailPage extends ConsumerWidget {
                   maxLines: 1,
                   placeholder: 'タイトルを記入',
                 ),
+                Row(
+                  children: [
+                    const Text(
+                      '時刻',
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                    ),
+                    const Spacer(),
+                    Text(
+                      state.time.format(context),
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        notifier.openPickTimeDialog(context);
+                      },
+                      icon: const Icon(Icons.access_time_outlined),
+                      color: AppColor.primaryColor,
+                    )
+                  ],
+                ),
                 const Row(
                   children: [
                     Text(
@@ -86,6 +98,14 @@ class DietDetailPage extends ConsumerWidget {
                   minLines: 5,
                   maxLines: 10,
                   placeholder: '食事内容を記入',
+                ),
+                const Row(
+                  children: [
+                    Text('栄養成分'),
+                  ],
+                ),
+                SizedBox(
+                  height: 20.h,
                 ),
                 Row(
                   children: [
@@ -156,6 +176,7 @@ class DietDetailPage extends ConsumerWidget {
                     const Text('g')
                   ],
                 ),
+                Text('${state.title}'),
                 SizedBox(
                   height: 50.h,
                 ),
@@ -179,9 +200,7 @@ class DietDetailPage extends ConsumerWidget {
       ),
       // floatingActionButton: FloatingActionButton(
       //     onPressed: () {
-      //       ImagePickerManager.getImageFromLibrary(
-      //           userId: '3bwrko6F7LVK06dpZcCGOxNGhQr2',
-      //           imageCategory: ImageCategory.diet);
+      //       _pickTime(context);
       //     },
       //     child: const Icon(Icons.photo_album)),
     );
