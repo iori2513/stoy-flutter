@@ -4,12 +4,12 @@ import 'package:stoy/domain/entities/diet/nutrition.dart';
 import 'package:stoy/domain/use_cases/diet/add_diet_use_case.dart';
 import 'package:stoy/presentation/providers/diet/detail/diet_detail_state.dart';
 
-class DietCreateNotifier extends StateNotifier<DietCreateState> {
+class DietDetailNotifier extends StateNotifier<DietDetailState> {
   final AddDietUseCase addDietUseCase;
 
-  DietCreateNotifier(super._state, {required this.addDietUseCase, Diet? diet}) {
+  DietDetailNotifier(super._state, {required this.addDietUseCase, Diet? diet}) {
     if (diet != null) {
-      state = DietCreateState(nutrition: diet.nutrition, date: diet.date);
+      state = DietDetailState(nutrition: diet.nutrition, date: diet.date);
     }
   }
 
@@ -35,7 +35,8 @@ class DietCreateNotifier extends StateNotifier<DietCreateState> {
     String? title,
     String? content,
   }) {
-    state = state.copyWith(title: title, content: content);
+    state = state.copyWith(
+        title: title ?? state.title, content: content ?? state.content);
   }
 
   void onChangeNutrition(

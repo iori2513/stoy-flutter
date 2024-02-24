@@ -17,10 +17,10 @@ class DietDetailPage extends ConsumerWidget {
   DietDetailPage({super.key, required this.diet});
 
   late final dietCreateProvider =
-      StateNotifierProvider<DietCreateNotifier, DietCreateState>((ref) {
+      StateNotifierProvider<DietDetailNotifier, DietDetailState>((ref) {
     final addDietUseCase = ref.watch(addDietUseCaseProvider);
-    final state = DietCreateState(nutrition: diet.nutrition, date: diet.date);
-    return DietCreateNotifier(state, addDietUseCase: addDietUseCase);
+    final state = DietDetailState(nutrition: diet.nutrition, date: diet.date);
+    return DietDetailNotifier(state, addDietUseCase: addDietUseCase);
   });
 
   @override
