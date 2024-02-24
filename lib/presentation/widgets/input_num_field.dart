@@ -7,6 +7,7 @@ class InputNumField extends StatefulWidget {
   final String placeholder;
   final double height;
   final double width;
+  final double initialValue;
 
   const InputNumField({
     super.key,
@@ -14,6 +15,7 @@ class InputNumField extends StatefulWidget {
     this.placeholder = '',
     required this.height,
     required this.width,
+    this.initialValue = 0,
   });
 
   @override
@@ -28,8 +30,9 @@ class _InputNumFieldState extends State<InputNumField> {
       height: widget.height,
       child: TextFormField(
         textAlignVertical: TextAlignVertical.center,
+        initialValue: widget.initialValue.toString(),
         onChanged: (String val) {
-          widget.onChangeNum(double.parse(val));
+          widget.onChangeNum(double.parse(val.isEmpty ? '0' : val) ?? 0);
         },
         cursorColor: AppColor.primaryColor,
         decoration: InputDecoration(
