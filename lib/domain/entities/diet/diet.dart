@@ -17,6 +17,16 @@ class Diet extends Equatable {
       required this.date,
       required this.nutrition});
 
+  static Diet empty(String userId) {
+    return Diet(
+        docId: '',
+        userId: userId,
+        title: '',
+        content: '',
+        date: DateTime.now(),
+        nutrition: Nutrition.empty());
+  }
+
   @override
   List<Object?> get props => throw UnimplementedError();
 }

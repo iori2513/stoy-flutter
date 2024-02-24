@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stoy/domain/entities/diet/diet.dart';
 import 'package:stoy/image_picker_manager.dart';
+import 'package:stoy/presentation/providers/diet/detail/diet_detail_notifier.dart';
+import 'package:stoy/presentation/providers/diet/detail/diet_detail_state.dart';
+import 'package:stoy/presentation/providers/shared/diet/diet_provider.dart';
 import 'package:stoy/presentation/widgets/common_text_field.dart';
 import 'package:stoy/presentation/widgets/input_num_field.dart';
 
-class DietCreatePage extends StatelessWidget {
-  const DietCreatePage({super.key});
+class DietDetailPage extends StatelessWidget {
+  final Diet diet;
+
+  DietDetailPage({super.key, required this.diet});
+
+  late final dietCreateProvider =
+      StateNotifierProvider<DietCreateNotifier, DietCreateState>((ref) {
+    final addDietUseCase = ref.watch(addDietUseCaseProvider);
+    final state = DietCreateState(nutrition: diet.nutrition, date: diet.date);
+    return DietCreateNotifier(state, addDietUseCase: addDietUseCase);
+  });
 
   @override
   Widget build(BuildContext context) {
