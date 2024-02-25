@@ -10,6 +10,7 @@ class DietModel extends Equatable {
   final String content;
   final DateTime date;
   final NutritionModel nutrition;
+  final String photoUrl;
 
   const DietModel(
       {required this.docId,
@@ -17,7 +18,8 @@ class DietModel extends Equatable {
       required this.title,
       required this.content,
       required this.date,
-      required this.nutrition});
+      required this.nutrition,
+      required this.photoUrl});
 
   // Firestoreに保存するためのMapに変換
   Map<String, dynamic> toFirestore() {
@@ -27,6 +29,7 @@ class DietModel extends Equatable {
       'content': content,
       'date': date,
       'nutrition': nutrition.toMap(),
+      'photoUrl': photoUrl,
     };
   }
 
@@ -40,7 +43,8 @@ class DietModel extends Equatable {
       title: data['title'] as String,
       content: data['content'] as String,
       date: (data['date'] as Timestamp).toDate(),
-      nutrition: NutritionModel.fromMap(data['nutrition']), // 仮定しています
+      nutrition: NutritionModel.fromMap(data['nutrition']),
+      photoUrl: data['photoUrl'] as String,
     );
   }
 
@@ -51,7 +55,8 @@ class DietModel extends Equatable {
         title: title,
         content: content,
         date: date,
-        nutrition: nutrition.toEntity());
+        nutrition: nutrition.toEntity(),
+        photoUrl: photoUrl);
   }
 
   static DietModel fromEntity(Diet diet) {
@@ -61,10 +66,10 @@ class DietModel extends Equatable {
         title: diet.title,
         content: diet.content,
         date: diet.date,
-        nutrition: NutritionModel.fromEntity(diet.nutrition));
+        nutrition: NutritionModel.fromEntity(diet.nutrition),
+        photoUrl: diet.photoUrl);
   }
 
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }

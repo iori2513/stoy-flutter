@@ -240,7 +240,8 @@ class DietDetailPage extends ConsumerWidget {
                   label: '保存する',
                   color: AppColor.primaryColor,
                   onPressed: () {
-                    notifier.addDiet(authState.user.userId);
+                    notifier.save(
+                        userId: authState.user.userId, context: context);
                   },
                   isLoading: state.isLoading,
                 ),

@@ -17,22 +17,27 @@ class DietDetailNotifier extends StateNotifier<DietDetailState> {
     }
   }
 
-  void addDiet(String userId) async {
+  Future<void> addDiet(String userId) async {
     final diet = Diet(
         docId: '',
         userId: userId,
         title: state.title,
         content: state.content,
         date: state.date,
-        nutrition: state.nutrition);
+        nutrition: state.nutrition,
+        photoUrl: state.photoUrl);
+    return addDietUseCase.call(diet);
+  }
+
+  void save({required String userId, required BuildContext context}) {
     state = state.copyWith(isLoading: true);
-    try {
-      await addDietUseCase.call(diet);
-    } catch (error) {
+    addDiet(userId).then((value) {
+      Navigator.pop(context);
+    }).catchError((error) {
       state = state.copyWith(errorMessage: error.toString());
-    } finally {
+    }).then((value) {
       state = state.copyWith(isLoading: false);
-    }
+    });
   }
 
   void onChangeText({

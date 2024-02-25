@@ -30,7 +30,9 @@ class HomePage extends StatelessWidget {
                           Diet.empty(''),
                         )));
           },
-          child: const DietPanel()),
+          child: DietPanel(
+            diet: Diet.empty(''),
+          )),
     );
   }
 }
