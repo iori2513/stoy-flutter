@@ -1,7 +1,7 @@
 import '../../entities/auth/auth_user.dart';
 
 abstract class AuthRepository {
-  Stream<AuthUser> get authUser;
+  Stream<AuthUser?> get authUser;
 
   Future<AuthUser> signUp(
       {required String email,

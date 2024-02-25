@@ -13,8 +13,9 @@ class AuthUser extends Equatable {
     this.photoUrl,
   });
 
-  static const emptyAuthUser =
-      AuthUser(userId: '', email: '', username: '', photoUrl: '');
+  static AuthUser emptyAuthUser() {
+    return const AuthUser(userId: '', email: '', username: '', photoUrl: '');
+  }
 
   bool get isEmpty => this == AuthUser.emptyAuthUser;
 

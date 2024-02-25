@@ -9,6 +9,7 @@ class CommonTextField extends StatefulWidget {
   final double width;
   final int? minLines;
   final int? maxLines;
+  final String initialValue;
 
   const CommonTextField(
       {super.key,
@@ -17,7 +18,8 @@ class CommonTextField extends StatefulWidget {
       required this.height,
       required this.width,
       this.minLines = 1,
-      this.maxLines});
+      this.maxLines,
+      this.initialValue = ''});
 
   @override
   State<CommonTextField> createState() => _CommonTextField();
@@ -30,6 +32,7 @@ class _CommonTextField extends State<CommonTextField> {
       width: widget.width,
       height: widget.height,
       child: TextFormField(
+        initialValue: widget.initialValue,
         textAlignVertical: TextAlignVertical.center,
         onChanged: widget.onChangeText,
         cursorColor: AppColor.primaryColor,

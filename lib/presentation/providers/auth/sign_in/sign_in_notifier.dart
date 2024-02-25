@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stoy/domain/use_cases/auth/sign_in_use_case.dart';
 import 'package:stoy/presentation/providers/auth/sign_in/sign_in_state.dart';
-import 'package:stoy/presentation/providers/shared/auth/auth_state.dart';
 
 class SignInNotifier extends StateNotifier<SignInState> {
   final SignInUseCase signInUseCase;
-  final AuthState authState;
 
-  SignInNotifier({required this.signInUseCase, required this.authState})
+  SignInNotifier({required this.signInUseCase})
       : super(const SignInState.initial());
 
   Future<void> signIn() async {
@@ -16,10 +14,9 @@ class SignInNotifier extends StateNotifier<SignInState> {
     try {
       final user = await signInUseCase.call(
           email: state.email, password: state.password);
-      final authState = state.authState.copyWith(user: user);
-      state = state.copyWith(authState: authState);
     } catch (error) {
       state = state.copyWith(errorMessage: error.toString());
+      print(error);
     } finally {
       state = state.copyWith(isLoading: false);
     }

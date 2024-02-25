@@ -29,6 +29,6 @@ class ImagePickerManager {
       await ref.putFile(pickedFile);
       return ref.getDownloadURL();
     }
-    return getDefaultDownloadImageUrl(imageCategory);
+    return '';
   }
 }

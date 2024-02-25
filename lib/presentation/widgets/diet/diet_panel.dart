@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
-import 'package:stoy/image_picker_manager.dart';
+import 'package:stoy/domain/entities/diet/diet.dart';
 
 class DietPanel extends StatelessWidget {
-  const DietPanel({super.key});
+  final Diet diet;
+
+  const DietPanel({super.key, required this.diet});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,9 @@ class DietPanel extends StatelessWidget {
             width: 82.w,
             decoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(15.h)),
-            child: Image.network(ImagePickerManager.getDefaultDownloadImageUrl(
-                ImageCategory.diet)),
+            child: diet.photoUrl.isNotEmpty
+                ? Image.network(diet.photoUrl)
+                : Icon(Icons.no_meals),
           ),
           SizedBox(
             width: 10.w,

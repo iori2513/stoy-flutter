@@ -11,10 +11,10 @@ class AuthRepositoryImpl implements AuthRepository {
   });
 
   @override
-  Stream<AuthUser> get authUser {
+  Stream<AuthUser?> get authUser {
     return remoteDataSource.user.map((user) {
       if (user == null) {
-        return AuthUser.emptyAuthUser;
+        return null;
       }
       return user.toEntity();
     });

@@ -8,6 +8,7 @@ class Diet extends Equatable {
   final String content;
   final DateTime date;
   final Nutrition nutrition;
+  final String photoUrl;
 
   const Diet(
       {required this.docId,
@@ -15,8 +16,20 @@ class Diet extends Equatable {
       required this.title,
       required this.content,
       required this.date,
-      required this.nutrition});
+      required this.nutrition,
+      required this.photoUrl});
+
+  static Diet empty(String userId) {
+    return Diet(
+        docId: '',
+        userId: userId,
+        title: '',
+        content: '',
+        date: DateTime.now(),
+        nutrition: Nutrition.empty(),
+        photoUrl: '');
+  }
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
