@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stoy/presentation/pages/auth/sign_in_page.dart';
 import 'package:stoy/presentation/pages/auth/sign_up_page.dart';
-import 'package:stoy/presentation/pages/core/default_page.dart';
+import 'package:stoy/presentation/pages/core/auth_check.dart';
 import 'package:stoy/presentation/pages/core/home_page.dart';
 import 'package:stoy/presentation/pages/core/main_page.dart';
 import 'package:stoy/presentation/pages/core/profile_page.dart';
