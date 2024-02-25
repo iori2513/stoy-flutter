@@ -18,7 +18,7 @@ class DietDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(dietDetailProvider(diet));
     final notifier = ref.watch(dietDetailProvider(diet).notifier);
-    final user = ref.watch(authUserProvider);
+    final authState = ref.watch(authNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Record Diet',
@@ -56,6 +56,63 @@ class DietDetailPage extends ConsumerWidget {
                   width: 335.w,
                   maxLines: 1,
                   placeholder: 'タイトルを記入',
+                ),
+                const Row(
+                  children: [
+                    Text(
+                      '画像',
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                    ),
+                    Spacer(),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Container(
+                      height: 300.h,
+                      width: 300.w,
+                      color: AppColor.backGroundGrey,
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: state.isLoadingImage
+                                ? const CircularProgressIndicator(
+                                    color: AppColor.secondaryColor,
+                                  )
+                                : state.photoUrl.isNotEmpty
+                                    ? Image.network(state.photoUrl)
+                                    : const Icon(
+                                        Icons.image,
+                                        size: 50,
+                                      ),
+                          ),
+                          Positioned(
+                            right: 0, // 左側に配置
+                            bottom: 0, // 下側に配置
+                            child: SizedBox(
+                              height: 50.h,
+                              width: 50.h,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  notifier.selectImage(authState.user.userId);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColor.primaryColor,
+                                  foregroundColor: AppColor.clearWhite,
+                                  padding: EdgeInsets.zero,
+                                ),
+                                child: Icon(
+                                  Icons.add,
+                                  size: 30.h,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 Row(
                   children: [
@@ -95,17 +152,16 @@ class DietDetailPage extends ConsumerWidget {
                   initialValue: state.content,
                   height: 240.h,
                   width: 335.w,
-                  minLines: 5,
+                  minLines: 10,
                   maxLines: 10,
                   placeholder: '食事内容を記入',
                 ),
                 const Row(
                   children: [
-                    Text('栄養成分'),
+                    Text('栄養成分',
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.w500)),
                   ],
-                ),
-                SizedBox(
-                  height: 20.h,
                 ),
                 Row(
                   children: [
@@ -176,7 +232,7 @@ class DietDetailPage extends ConsumerWidget {
                     const Text('g')
                   ],
                 ),
-                Text('${state.title}'),
+                Text(state.title),
                 SizedBox(
                   height: 50.h,
                 ),
@@ -184,14 +240,12 @@ class DietDetailPage extends ConsumerWidget {
                   label: '保存する',
                   color: AppColor.primaryColor,
                   onPressed: () {
-                    return user.when(
-                        data: (user) {
-                          notifier.addDiet(user.userId);
-                        },
-                        error: (Object error, StackTrace stackTrace) {},
-                        loading: () {});
+                    notifier.addDiet(authState.user.userId);
                   },
                   isLoading: state.isLoading,
+                ),
+                SizedBox(
+                  height: 60.h,
                 )
               ],
             ),

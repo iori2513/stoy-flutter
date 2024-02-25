@@ -6,7 +6,7 @@ class UserUseCase {
 
   UserUseCase({required this.authRepository});
 
-  Stream<AuthUser> call() {
+  Stream<AuthUser?> call() {
     return authRepository.authUser;
   }
 }

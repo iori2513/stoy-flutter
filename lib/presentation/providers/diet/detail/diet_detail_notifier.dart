@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stoy/domain/entities/diet/diet.dart';
 import 'package:stoy/domain/entities/diet/nutrition.dart';
 import 'package:stoy/domain/use_cases/diet/add_diet_use_case.dart';
+import 'package:stoy/image_picker_manager.dart';
 import 'package:stoy/presentation/providers/diet/detail/diet_detail_state.dart';
 import 'package:stoy/utils/time_picker.dart';
 
@@ -53,10 +54,15 @@ class DietDetailNotifier extends StateNotifier<DietDetailState> {
 
   void openPickTimeDialog(BuildContext context) async {
     final time = await pickTime(context, state.time);
-    print(time);
     if (time != null) {
       state = state.copyWith(time: time);
     }
-    print(state);
+  }
+
+  void selectImage(String userId) async {
+    state = state.copyWith(isLoadingImage: true);
+    final photoUrl = await ImagePickerManager.getImageFromLibrary(
+        userId: userId, imageCategory: ImageCategory.diet);
+    state = state.copyWith(photoUrl: photoUrl, isLoadingImage: false);
   }
 }

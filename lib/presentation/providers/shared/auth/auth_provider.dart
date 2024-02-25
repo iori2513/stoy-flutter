@@ -39,7 +39,7 @@ final authUserUseCase = Provider<UserUseCase>((ref) {
   return UserUseCase(authRepository: authRepository);
 });
 
-final authUserProvider = StreamProvider.autoDispose<AuthUser>((ref) {
+final authUserProvider = StreamProvider.autoDispose<AuthUser?>((ref) {
   final userUseCase = ref.watch(authUserUseCase);
   return userUseCase.call();
 });

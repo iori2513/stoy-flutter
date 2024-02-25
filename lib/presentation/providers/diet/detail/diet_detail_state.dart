@@ -12,7 +12,9 @@ class DietDetailState with _$DietDetailState {
     required DateTime date,
     required Nutrition nutrition,
     required TimeOfDay time,
+    @Default('') String photoUrl,
     @Default(false) bool isLoading,
+    @Default(false) bool isLoadingImage,
     String? errorMessage,
   }) = _DietDetailState;
 

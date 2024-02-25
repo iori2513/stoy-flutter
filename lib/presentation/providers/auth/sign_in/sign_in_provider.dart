@@ -6,6 +6,5 @@ import 'package:stoy/presentation/providers/shared/auth/auth_provider.dart';
 final signInNotifierProvider =
     StateNotifierProvider<SignInNotifier, SignInState>((ref) {
   final signInUseCase = ref.watch(signInUseCaseProvider);
-  final authState = ref.watch(authNotifierProvider);
-  return SignInNotifier(signInUseCase: signInUseCase, authState: authState);
+  return SignInNotifier(signInUseCase: signInUseCase);
 });

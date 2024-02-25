@@ -22,7 +22,9 @@ class AppRouter {
       case '/profile':
         return MaterialPageRoute(builder: (_) => const ProfilePage());
       default:
-        return MaterialPageRoute(builder: (_) => const DefaultPage());
+        return MaterialPageRoute(
+            builder: (_) => const AuthCheck(
+                loggedInScreen: MainPage(), loggedOutScreen: SignInPage()));
     }
   }
 }

@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:stoy/presentation/providers/shared/auth/auth_state.dart';
 
 class SignUpState extends Equatable {
-  final AuthState authState;
   final String email;
   final String password;
   final String username;
@@ -10,7 +8,6 @@ class SignUpState extends Equatable {
   final String? errorMessage;
 
   const SignUpState({
-    this.authState = const AuthState.initial(),
     this.email = '',
     this.password = '',
     this.username = '',
@@ -19,7 +16,6 @@ class SignUpState extends Equatable {
   });
 
   const SignUpState.initial({
-    this.authState = const AuthState.initial(),
     this.email = '',
     this.password = '',
     this.username = '',
@@ -28,7 +24,6 @@ class SignUpState extends Equatable {
   });
 
   SignUpState copyWith({
-    AuthState? authState,
     String? email,
     String? password,
     String? username,
@@ -36,7 +31,6 @@ class SignUpState extends Equatable {
     String? errorMessage,
   }) {
     return SignUpState(
-        authState: authState ?? this.authState,
         email: email ?? this.email,
         password: password ?? this.password,
         username: username ?? this.username,
