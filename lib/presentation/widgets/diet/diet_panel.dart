@@ -30,7 +30,7 @@ class DietPanel extends StatelessWidget {
                 BoxDecoration(borderRadius: BorderRadius.circular(15.h)),
             child: diet.photoUrl.isNotEmpty
                 ? Image.network(diet.photoUrl)
-                : Icon(Icons.no_meals),
+                : const Icon(Icons.no_meals),
           ),
           SizedBox(
             width: 10.w,
@@ -41,24 +41,25 @@ class DietPanel extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              const Text(
-                '1食目',
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+              Text(
+                diet.title,
+                style:
+                    const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
               ),
               SizedBox(
                 height: 5.h,
               ),
-              const Text(
-                'タンパク質: 500g',
-                style: TextStyle(fontSize: 10, color: AppColor.textGrey),
+              Text(
+                'タンパク質: ${diet.nutrition.protein}g',
+                style: const TextStyle(fontSize: 10, color: AppColor.textGrey),
               ),
-              const Text(
-                '脂質: 400g',
-                style: TextStyle(fontSize: 10, color: AppColor.textGrey),
+              Text(
+                '脂質: ${diet.nutrition.fat}g',
+                style: const TextStyle(fontSize: 10, color: AppColor.textGrey),
               ),
-              const Text(
-                '炭水化物: 500g',
-                style: TextStyle(fontSize: 10, color: AppColor.textGrey),
+              Text(
+                '炭水化物: ${diet.nutrition.carbohydrates}g',
+                style: const TextStyle(fontSize: 10, color: AppColor.textGrey),
               ),
               SizedBox(
                 height: 10.h,
