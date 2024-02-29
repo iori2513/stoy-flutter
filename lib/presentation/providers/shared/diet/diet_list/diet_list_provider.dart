@@ -6,7 +6,8 @@ import 'package:stoy/presentation/providers/shared/diet/diet_provider.dart';
 
 final dietListNotifierProvider =
     StateNotifierProvider.autoDispose<DietListNotifier, DietListState>((ref) {
-  final dietListUseCase = ref.watch(dietListUseCaseProvider);
+  final fetchDietListUseCase = ref.watch(fetchDietListUseCaseProvider);
   final authState = ref.watch(authNotifierProvider);
-  return DietListNotifier(dietListUseCase, authState);
+  return DietListNotifier(
+      fetchDietListUseCase: fetchDietListUseCase, authState: authState);
 });
