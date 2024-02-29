@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stoy/domain/use_cases/auth/sign_up_use_case.dart';
-import 'package:stoy/presentation/providers/auth/sign_up/sign_up_state.dart';
+import 'package:stoy/presentation/providers/single/auth/sign_up/sign_up_state.dart';
 
 class SignUpNotifier extends StateNotifier<SignUpState> {
   final SignUpUseCase signUpUseCase;

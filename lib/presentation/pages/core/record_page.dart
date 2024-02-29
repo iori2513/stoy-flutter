@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stoy/constants/app_color.dart';
-import 'package:stoy/presentation/providers/record/record_provider.dart';
+import 'package:stoy/presentation/providers/single/record/record_provider.dart';
+import 'package:stoy/presentation/widgets/diet/diet_panel.dart';
 import 'package:stoy/presentation/widgets/weekly_date_picker.dart';
 
 class RecordPage extends ConsumerWidget {
@@ -26,7 +27,14 @@ class RecordPage extends ConsumerWidget {
       body: Column(
         children: [
           WeeklyDatePicker(onChangeDate: notifier.onChangeDate),
-          Text(state.date.toString())
+          Expanded(
+            child: ListView.builder(
+              itemCount: notifier.dietListState.diets.length,
+              itemBuilder: (context, index) {
+                return DietPanel(diet: notifier.dietListState.diets[index]);
+              },
+            ),
+          ),
         ],
       ),
     );

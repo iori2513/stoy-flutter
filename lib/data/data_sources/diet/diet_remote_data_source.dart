@@ -13,12 +13,8 @@ class DietRemoteDataSource {
   }
 
   Stream<List<DietModel>> dietList(String userId) {
-    return FirebaseFirestore.instance
-        .collection('diets')
+    return ref
         .where('userId', isEqualTo: userId)
-        .withConverter<DietModel>(
-            fromFirestore: (snapshot, _) => DietModel.fromFirestore(snapshot),
-            toFirestore: (dietModel, _) => dietModel.toFirestore())
         .snapshots()
         .map((event) => event.docs.map((e) => e.data()).toList());
   }

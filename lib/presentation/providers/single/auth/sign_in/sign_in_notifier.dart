@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stoy/domain/use_cases/auth/sign_in_use_case.dart';
-import 'package:stoy/presentation/providers/auth/sign_in/sign_in_state.dart';
+import 'package:stoy/presentation/providers/single/auth/sign_in/sign_in_state.dart';
 
 class SignInNotifier extends StateNotifier<SignInState> {
   final SignInUseCase signInUseCase;

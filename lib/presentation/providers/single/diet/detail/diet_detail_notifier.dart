@@ -4,7 +4,7 @@ import 'package:stoy/domain/entities/diet/diet.dart';
 import 'package:stoy/domain/entities/diet/nutrition.dart';
 import 'package:stoy/domain/use_cases/diet/add_diet_use_case.dart';
 import 'package:stoy/image_picker_manager.dart';
-import 'package:stoy/presentation/providers/diet/detail/diet_detail_state.dart';
+import 'package:stoy/presentation/providers/single/diet/detail/diet_detail_state.dart';
 import 'package:stoy/utils/time_picker.dart';
 
 class DietDetailNotifier extends StateNotifier<DietDetailState> {
