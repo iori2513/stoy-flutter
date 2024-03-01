@@ -7,6 +7,6 @@ class UpdateDietUseCase {
   UpdateDietUseCase({required this.dietRepository});
 
   Future<void> call(Diet diet) {
-    return dietRepository.addDiet(diet);
+    return dietRepository.updateDiet(diet);
   }
 }

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:stoy/domain/entities/diet/nutrition.dart';
+import 'package:stoy/domain/entities/nutrition/nutrition.dart';
 
 class NutritionModel extends Equatable {
   final double protein;

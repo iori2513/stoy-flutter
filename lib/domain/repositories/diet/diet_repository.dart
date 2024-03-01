@@ -5,5 +5,5 @@ abstract class DietRepository {
 
   Stream<List<Diet>> dietList(String userId);
 
-  Future<void> update(Diet diet);
+  Future<void> updateDiet(Diet diet);
 }

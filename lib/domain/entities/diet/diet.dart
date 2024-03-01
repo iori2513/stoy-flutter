@@ -1,35 +1,27 @@
-import 'package:equatable/equatable.dart';
-import 'package:stoy/domain/entities/diet/nutrition.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stoy/domain/entities/nutrition/nutrition.dart';
 
-class Diet extends Equatable {
-  final String docId;
-  final String userId;
-  final String title;
-  final String content;
-  final DateTime date;
-  final Nutrition nutrition;
-  final String photoUrl;
+part 'diet.freezed.dart';
 
-  const Diet(
-      {required this.docId,
-      required this.userId,
-      required this.title,
-      required this.content,
-      required this.date,
-      required this.nutrition,
-      required this.photoUrl});
+@freezed
+class Diet with _$Diet {
+  const factory Diet({
+    required String docId,
+    required String userId,
+    required String title,
+    required String content,
+    required DateTime date,
+    required Nutrition nutrition,
+    required String photoUrl,
+  }) = _Diet;
 
-  static Diet empty(String userId) {
-    return Diet(
+  factory Diet.empty({required String userId, DateTime? date}) => Diet(
         docId: '',
         userId: userId,
         title: '',
         content: '',
-        date: DateTime.now(),
+        date: date ?? DateTime.now(),
         nutrition: Nutrition.empty(),
-        photoUrl: '');
-  }
-
-  @override
-  List<Object?> get props => [];
+        photoUrl: '',
+      );
 }

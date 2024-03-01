@@ -19,7 +19,7 @@ class DietRemoteDataSource {
         .map((event) => event.docs.map((e) => e.data()).toList());
   }
 
-  Future<void> updateDiet(DietModel diet) async {
-    return ref.doc(diet.docId).set(diet);
+  Future<void> updateDiet({required DietModel dietModel}) async {
+    return ref.doc(dietModel.docId).set(dietModel);
   }
 }

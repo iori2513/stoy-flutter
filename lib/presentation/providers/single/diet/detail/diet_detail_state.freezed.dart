@@ -16,12 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DietDetailState {
-  String get title => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
-  Nutrition get nutrition => throw _privateConstructorUsedError;
+  Diet get diet => throw _privateConstructorUsedError;
   TimeOfDay get time => throw _privateConstructorUsedError;
-  String get photoUrl => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isLoadingImage => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
@@ -38,15 +34,13 @@ abstract class $DietDetailStateCopyWith<$Res> {
       _$DietDetailStateCopyWithImpl<$Res, DietDetailState>;
   @useResult
   $Res call(
-      {String title,
-      String content,
-      DateTime date,
-      Nutrition nutrition,
+      {Diet diet,
       TimeOfDay time,
-      String photoUrl,
       bool isLoading,
       bool isLoadingImage,
       String? errorMessage});
+
+  $DietCopyWith<$Res> get diet;
 }
 
 /// @nodoc
@@ -62,41 +56,21 @@ class _$DietDetailStateCopyWithImpl<$Res, $Val extends DietDetailState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? content = null,
-    Object? date = null,
-    Object? nutrition = null,
+    Object? diet = null,
     Object? time = null,
-    Object? photoUrl = null,
     Object? isLoading = null,
     Object? isLoadingImage = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      nutrition: null == nutrition
-          ? _value.nutrition
-          : nutrition // ignore: cast_nullable_to_non_nullable
-              as Nutrition,
+      diet: null == diet
+          ? _value.diet
+          : diet // ignore: cast_nullable_to_non_nullable
+              as Diet,
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
-      photoUrl: null == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -111,6 +85,14 @@ class _$DietDetailStateCopyWithImpl<$Res, $Val extends DietDetailState>
               as String?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DietCopyWith<$Res> get diet {
+    return $DietCopyWith<$Res>(_value.diet, (value) {
+      return _then(_value.copyWith(diet: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -122,15 +104,14 @@ abstract class _$$DietDetailStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
-      String content,
-      DateTime date,
-      Nutrition nutrition,
+      {Diet diet,
       TimeOfDay time,
-      String photoUrl,
       bool isLoading,
       bool isLoadingImage,
       String? errorMessage});
+
+  @override
+  $DietCopyWith<$Res> get diet;
 }
 
 /// @nodoc
@@ -144,41 +125,21 @@ class __$$DietDetailStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? content = null,
-    Object? date = null,
-    Object? nutrition = null,
+    Object? diet = null,
     Object? time = null,
-    Object? photoUrl = null,
     Object? isLoading = null,
     Object? isLoadingImage = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$DietDetailStateImpl(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      nutrition: null == nutrition
-          ? _value.nutrition
-          : nutrition // ignore: cast_nullable_to_non_nullable
-              as Nutrition,
+      diet: null == diet
+          ? _value.diet
+          : diet // ignore: cast_nullable_to_non_nullable
+              as Diet,
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
-      photoUrl: null == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -199,31 +160,16 @@ class __$$DietDetailStateImplCopyWithImpl<$Res>
 
 class _$DietDetailStateImpl implements _DietDetailState {
   const _$DietDetailStateImpl(
-      {this.title = '',
-      this.content = '',
-      required this.date,
-      required this.nutrition,
+      {required this.diet,
       required this.time,
-      this.photoUrl = '',
       this.isLoading = false,
       this.isLoadingImage = false,
       this.errorMessage});
 
   @override
-  @JsonKey()
-  final String title;
-  @override
-  @JsonKey()
-  final String content;
-  @override
-  final DateTime date;
-  @override
-  final Nutrition nutrition;
+  final Diet diet;
   @override
   final TimeOfDay time;
-  @override
-  @JsonKey()
-  final String photoUrl;
   @override
   @JsonKey()
   final bool isLoading;
@@ -235,7 +181,7 @@ class _$DietDetailStateImpl implements _DietDetailState {
 
   @override
   String toString() {
-    return 'DietDetailState(title: $title, content: $content, date: $date, nutrition: $nutrition, time: $time, photoUrl: $photoUrl, isLoading: $isLoading, isLoadingImage: $isLoadingImage, errorMessage: $errorMessage)';
+    return 'DietDetailState(diet: $diet, time: $time, isLoading: $isLoading, isLoadingImage: $isLoadingImage, errorMessage: $errorMessage)';
   }
 
   @override
@@ -243,14 +189,8 @@ class _$DietDetailStateImpl implements _DietDetailState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DietDetailStateImpl &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.content, content) || other.content == content) &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.nutrition, nutrition) ||
-                other.nutrition == nutrition) &&
+            (identical(other.diet, diet) || other.diet == diet) &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isLoadingImage, isLoadingImage) ||
@@ -260,8 +200,8 @@ class _$DietDetailStateImpl implements _DietDetailState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, content, date, nutrition,
-      time, photoUrl, isLoading, isLoadingImage, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, diet, time, isLoading, isLoadingImage, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -273,28 +213,16 @@ class _$DietDetailStateImpl implements _DietDetailState {
 
 abstract class _DietDetailState implements DietDetailState {
   const factory _DietDetailState(
-      {final String title,
-      final String content,
-      required final DateTime date,
-      required final Nutrition nutrition,
+      {required final Diet diet,
       required final TimeOfDay time,
-      final String photoUrl,
       final bool isLoading,
       final bool isLoadingImage,
       final String? errorMessage}) = _$DietDetailStateImpl;
 
   @override
-  String get title;
-  @override
-  String get content;
-  @override
-  DateTime get date;
-  @override
-  Nutrition get nutrition;
+  Diet get diet;
   @override
   TimeOfDay get time;
-  @override
-  String get photoUrl;
   @override
   bool get isLoading;
   @override

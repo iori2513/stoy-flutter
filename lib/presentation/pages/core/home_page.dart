@@ -10,29 +10,27 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('STOY',
-            style: TextStyle(
-                color: AppColor.primaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 20)),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
+        appBar: AppBar(
+          title: const Text('STOY',
+              style: TextStyle(
+                  color: AppColor.primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20)),
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {},
+          ),
         ),
-      ),
-      body: GestureDetector(
+        body: GestureDetector(
           onTap: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => DietDetailPage(
-                          Diet.empty(''),
+                          Diet.empty(userId: ''),
                         )));
           },
-          child: DietPanel(
-            diet: Diet.empty(''),
-          )),
-    );
+          child: DietPanel(diet: Diet.empty(userId: '')),
+        ));
   }
 }

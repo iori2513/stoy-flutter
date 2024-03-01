@@ -51,7 +51,7 @@ class DietDetailPage extends ConsumerWidget {
                   onChangeText: (val) {
                     notifier.onChangeText(title: val);
                   },
-                  initialValue: state.title,
+                  initialValue: state.diet.title,
                   height: 50.h,
                   width: 335.w,
                   maxLines: 1,
@@ -80,8 +80,8 @@ class DietDetailPage extends ConsumerWidget {
                                 ? const CircularProgressIndicator(
                                     color: AppColor.secondaryColor,
                                   )
-                                : state.photoUrl.isNotEmpty
-                                    ? Image.network(state.photoUrl)
+                                : state.diet.photoUrl.isNotEmpty
+                                    ? Image.network(state.diet.photoUrl)
                                     : const Icon(
                                         Icons.image,
                                         size: 50,
@@ -149,7 +149,7 @@ class DietDetailPage extends ConsumerWidget {
                   onChangeText: (val) {
                     notifier.onChangeText(content: val);
                   },
-                  initialValue: state.content,
+                  initialValue: state.diet.content,
                   height: 240.h,
                   width: 335.w,
                   minLines: 10,
@@ -177,7 +177,7 @@ class DietDetailPage extends ConsumerWidget {
                         onChangeNum: (val) {
                           notifier.onChangeNutrition(protein: val);
                         },
-                        initialValue: state.nutrition.protein,
+                        initialValue: state.diet.nutrition.protein,
                         height: 50.h,
                         width: 200.w),
                     SizedBox(
@@ -200,7 +200,7 @@ class DietDetailPage extends ConsumerWidget {
                         onChangeNum: (val) {
                           notifier.onChangeNutrition(fat: val);
                         },
-                        initialValue: state.nutrition.fat,
+                        initialValue: state.diet.nutrition.fat,
                         height: 50.h,
                         width: 200.w),
                     SizedBox(
@@ -223,7 +223,7 @@ class DietDetailPage extends ConsumerWidget {
                         onChangeNum: (val) {
                           notifier.onChangeNutrition(carbohydrates: val);
                         },
-                        initialValue: state.nutrition.carbohydrates,
+                        initialValue: state.diet.nutrition.carbohydrates,
                         height: 50.h,
                         width: 200.w),
                     SizedBox(
@@ -232,16 +232,14 @@ class DietDetailPage extends ConsumerWidget {
                     const Text('g')
                   ],
                 ),
-                Text(state.title),
                 SizedBox(
                   height: 50.h,
                 ),
                 OutlinedWideButton(
-                  label: '保存する',
+                  label: state.diet.docId.isEmpty ? '保存する' : '更新する',
                   color: AppColor.primaryColor,
                   onPressed: () {
-                    notifier.save(
-                        userId: authState.user.userId, context: context);
+                    notifier.executeSave(context: context);
                   },
                   isLoading: state.isLoading,
                 ),

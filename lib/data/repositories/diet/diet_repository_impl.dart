@@ -21,8 +21,8 @@ class DietRepositoryImpl implements DietRepository {
   }
 
   @override
-  Future<void> update(Diet diet) {
+  Future<void> updateDiet(Diet diet) {
     final dietModel = DietModel.fromEntity(diet);
-    return remoteDataSource.updateDiet(dietModel);
+    return remoteDataSource.updateDiet(dietModel: dietModel);
   }
 }
