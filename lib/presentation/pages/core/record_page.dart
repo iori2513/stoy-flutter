@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
-import 'package:stoy/presentation/pages/diet/diet_detail_page.dart';
 import 'package:stoy/presentation/providers/shared/diet/diet_list/diet_list_provider.dart';
 import 'package:stoy/presentation/providers/single/record/record_provider.dart';
 import 'package:stoy/presentation/widgets/diet/diet_panel.dart';
@@ -52,12 +51,8 @@ class RecordPage extends ConsumerWidget {
                 return Column(children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                DietDetailPage(targetDateDietList[index]),
-                          ));
+                      notifier.goToEditDietPage(
+                          context: context, diet: targetDateDietList[index]);
                     },
                     child: DietPanel(diet: targetDateDietList[index]),
                   ),

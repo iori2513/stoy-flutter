@@ -22,4 +22,12 @@ class RecordNotifier extends StateNotifier<RecordState> {
               DietDetailPage(Diet.empty(userId: '', date: state.date)),
         ));
   }
+
+  void goToEditDietPage({required BuildContext context, required Diet diet}) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DietDetailPage(diet),
+        ));
+  }
 }
