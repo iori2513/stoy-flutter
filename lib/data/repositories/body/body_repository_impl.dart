@@ -3,7 +3,7 @@ import 'package:stoy/domain/entities/body/body.dart';
 import 'package:stoy/domain/repositories/body/body_repository.dart';
 
 class BodyRepositoryImpl implements BodyRepository {
-  final BodyRemoteDataSource remoteDataSource:
+  final BodyRemoteDataSource remoteDataSource;
 
   const BodyRepositoryImpl(this.remoteDataSource);
 
@@ -21,5 +21,4 @@ class BodyRepositoryImpl implements BodyRepository {
   Future<void> updateBodyData(Body body) {
     return remoteDataSource.updateDiet(body: body);
   }
-
 }
