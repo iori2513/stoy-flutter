@@ -5,6 +5,7 @@ import 'package:stoy/constants/app_color.dart';
 import 'package:stoy/presentation/providers/shared/diet/diet_list/diet_list_provider.dart';
 import 'package:stoy/presentation/providers/single/record/record_provider.dart';
 import 'package:stoy/presentation/widgets/diet/diet_panel.dart';
+import 'package:stoy/presentation/widgets/global_side_bar.dart';
 import 'package:stoy/presentation/widgets/weekly_date_picker.dart';
 
 class RecordPage extends ConsumerWidget {
@@ -29,10 +30,6 @@ class RecordPage extends ConsumerWidget {
                 color: AppColor.primaryColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 20)),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
         actions: [
           IconButton(
               onPressed: () {
@@ -65,6 +62,7 @@ class RecordPage extends ConsumerWidget {
           ),
         ],
       ),
+      drawer: const GlobalSideBar(),
     );
   }
 }

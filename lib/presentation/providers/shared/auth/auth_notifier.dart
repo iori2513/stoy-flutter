@@ -21,6 +21,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
       (user) {
         if (user != null) {
           state = state.copyWith(user: user);
+        } else {
+          state = state.copyWith(user: AuthUser.emptyAuthUser);
         }
       },
       onError: (error) {

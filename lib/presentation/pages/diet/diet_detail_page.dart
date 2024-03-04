@@ -21,8 +21,8 @@ class DietDetailPage extends ConsumerWidget {
     final authState = ref.watch(authNotifierProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Record Diet',
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18)),
+        title: Text('${diet.date.month}月${diet.date.day}日の食事記録',
+            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18)),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
