@@ -17,11 +17,17 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Body {
   String get docId => throw _privateConstructorUsedError;
+
   String get userId => throw _privateConstructorUsedError;
+
   double get weight => throw _privateConstructorUsedError;
+
   double get fatPercentage => throw _privateConstructorUsedError;
+
   double get bodyTemp => throw _privateConstructorUsedError;
+
   String get ymd => throw _privateConstructorUsedError;
+
   String get memo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,6 +38,7 @@ mixin _$Body {
 abstract class $BodyCopyWith<$Res> {
   factory $BodyCopyWith(Body value, $Res Function(Body) then) =
       _$BodyCopyWithImpl<$Res, Body>;
+
   @useResult
   $Res call(
       {String docId,
@@ -50,6 +57,7 @@ class _$BodyCopyWithImpl<$Res, $Val extends Body>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -102,6 +110,7 @@ abstract class _$$BodyImplCopyWith<$Res> implements $BodyCopyWith<$Res> {
   factory _$$BodyImplCopyWith(
           _$BodyImpl value, $Res Function(_$BodyImpl) then) =
       __$$BodyImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
@@ -223,6 +232,12 @@ class _$BodyImpl implements _Body {
   @pragma('vm:prefer-inline')
   _$$BodyImplCopyWith<_$BodyImpl> get copyWith =>
       __$$BodyImplCopyWithImpl<_$BodyImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toFirestore() {
+    // TODO: implement toFirestore
+    throw UnimplementedError();
+  }
 }
 
 abstract class _Body implements Body {
@@ -237,18 +252,25 @@ abstract class _Body implements Body {
 
   @override
   String get docId;
+
   @override
   String get userId;
+
   @override
   double get weight;
+
   @override
   double get fatPercentage;
+
   @override
   double get bodyTemp;
+
   @override
   String get ymd;
+
   @override
   String get memo;
+
   @override
   @JsonKey(ignore: true)
   _$$BodyImplCopyWith<_$BodyImpl> get copyWith =>

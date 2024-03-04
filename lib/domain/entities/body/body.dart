@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'body.freezed.dart';
@@ -23,4 +24,30 @@ class Body with _$Body {
         ymd: '${date.year}-${date.month}-${date.day}',
         memo: '',
       );
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      'userId': userId,
+      'weight': weight,
+      'fatPercentage': fatPercentage,
+      'bodyTemp': bodyTemp,
+      'ymd': ymd,
+      'memo': memo,
+    };
+  }
+
+  static Body fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+  ) {
+    var data = snapshot.data()!;
+    return Body(
+      docId: snapshot.id,
+      userId: data['userId'] as String,
+      weight: data['weight'] as double,
+      fatPercentage: data['fatPercentage'] as double,
+      bodyTemp: data['bodyTemp'] as double,
+      ymd: data['ymd'] as String,
+      memo: data['memo'] as String,
+    );
+  }
 }
