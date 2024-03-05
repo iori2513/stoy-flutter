@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RecordState {
   DateTime get date => throw _privateConstructorUsedError;
+  TabType get tab => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecordStateCopyWith<RecordState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $RecordStateCopyWith<$Res> {
           RecordState value, $Res Function(RecordState) then) =
       _$RecordStateCopyWithImpl<$Res, RecordState>;
   @useResult
-  $Res call({DateTime date});
+  $Res call({DateTime date, TabType tab});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$RecordStateCopyWithImpl<$Res, $Val extends RecordState>
   @override
   $Res call({
     Object? date = null,
+    Object? tab = null,
   }) {
     return _then(_value.copyWith(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      tab: null == tab
+          ? _value.tab
+          : tab // ignore: cast_nullable_to_non_nullable
+              as TabType,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$RecordStateImplCopyWith<$Res>
       __$$RecordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime date});
+  $Res call({DateTime date, TabType tab});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$RecordStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? date = null,
+    Object? tab = null,
   }) {
     return _then(_$RecordStateImpl(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      tab: null == tab
+          ? _value.tab
+          : tab // ignore: cast_nullable_to_non_nullable
+              as TabType,
     ));
   }
 }
@@ -92,14 +103,16 @@ class __$$RecordStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RecordStateImpl implements _RecordState {
-  const _$RecordStateImpl({required this.date});
+  const _$RecordStateImpl({required this.date, required this.tab});
 
   @override
   final DateTime date;
+  @override
+  final TabType tab;
 
   @override
   String toString() {
-    return 'RecordState(date: $date)';
+    return 'RecordState(date: $date, tab: $tab)';
   }
 
   @override
@@ -107,11 +120,12 @@ class _$RecordStateImpl implements _RecordState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RecordStateImpl &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.tab, tab) || other.tab == tab));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date);
+  int get hashCode => Object.hash(runtimeType, date, tab);
 
   @JsonKey(ignore: true)
   @override
@@ -121,11 +135,14 @@ class _$RecordStateImpl implements _RecordState {
 }
 
 abstract class _RecordState implements RecordState {
-  const factory _RecordState({required final DateTime date}) =
-      _$RecordStateImpl;
+  const factory _RecordState(
+      {required final DateTime date,
+      required final TabType tab}) = _$RecordStateImpl;
 
   @override
   DateTime get date;
+  @override
+  TabType get tab;
   @override
   @JsonKey(ignore: true)
   _$$RecordStateImplCopyWith<_$RecordStateImpl> get copyWith =>

@@ -128,7 +128,6 @@ class BodyDataDetailPage extends ConsumerWidget {
                   label: notifier.executeButtonText,
                   color: AppColor.primaryColor,
                   onPressed: () {
-                    print(notifier.authState.user);
                     notifier.executeSave(context: context);
                   },
                   isLoading: state.isLoading,
