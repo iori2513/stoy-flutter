@@ -39,7 +39,7 @@ final fetchUserUseCaseProvider = Provider<FetchUserUseCase>((ref) {
 });
 
 final authNotifierProvider =
-    StateNotifierProvider.autoDispose<AuthNotifier, AuthState>((ref) {
+    StateNotifierProvider<AuthNotifier, AuthState>((ref) {
   final fetchUserUseCase = ref.watch(fetchUserUseCaseProvider);
   return AuthNotifier(fetchUserUseCase);
 });

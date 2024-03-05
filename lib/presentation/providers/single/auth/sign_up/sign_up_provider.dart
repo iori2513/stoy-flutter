@@ -4,7 +4,7 @@ import 'package:stoy/presentation/providers/single/auth/sign_up/sign_up_notifier
 import 'package:stoy/presentation/providers/single/auth/sign_up/sign_up_state.dart';
 
 final signUpNotifierProvider =
-    StateNotifierProvider.autoDispose<SignUpNotifier, SignUpState>((ref) {
+    StateNotifierProvider<SignUpNotifier, SignUpState>((ref) {
   final signUpUseCase = ref.watch(signUpUseCaseProvider);
   return SignUpNotifier(signUpUseCase: signUpUseCase);
 });

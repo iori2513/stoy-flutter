@@ -42,7 +42,7 @@ class SignInPage extends ConsumerWidget {
             OutlinedWideButton(
               label: 'signIn',
               color: AppColor.primaryColor,
-              onPressed: () {
+              onPressed: () async {
                 notifier.signIn();
               },
               isLoading: state.isLoading,

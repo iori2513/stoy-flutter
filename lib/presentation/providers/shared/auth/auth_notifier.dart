@@ -19,10 +19,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
   void _subscribeAuthUser() {
     _userSubscription = fetchUserUseCase.call().listen(
       (user) {
+        print('listen');
         if (user != null) {
+          print('user not null');
           state = state.copyWith(user: user);
         } else {
           state = state.copyWith(user: AuthUser.emptyAuthUser);
+          print('user null');
         }
       },
       onError: (error) {
