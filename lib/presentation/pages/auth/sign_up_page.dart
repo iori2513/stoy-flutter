@@ -6,7 +6,7 @@ import 'package:stoy/presentation/providers/single/auth/sign_up/sign_up_provider
 import 'package:stoy/presentation/widgets/auth/auth_page_title.dart';
 import 'package:stoy/presentation/widgets/outlined_button.dart';
 
-import '../../widgets/auth/auth_text_field.dart';
+import 'package:stoy/presentation/widgets/auth/auth_text_field.dart';
 
 class SignUpPage extends ConsumerWidget {
   const SignUpPage({super.key});
@@ -60,7 +60,7 @@ class SignUpPage extends ConsumerWidget {
               alignment: Alignment.center,
               child: Row(
                 children: [
-                  const Text("Already have account?"),
+                  const Text('Already have account?'),
                   TextButton(
                     style: TextButton.styleFrom(
                       textStyle: const TextStyle(

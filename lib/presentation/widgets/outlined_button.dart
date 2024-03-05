@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
 
-import '../../constants/text_styles.dart';
+import 'package:stoy/constants/text_styles.dart';
 
 class OutlinedWideButton extends StatefulWidget {
   final String label;

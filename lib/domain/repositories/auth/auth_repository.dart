@@ -1,4 +1,4 @@
-import '../../entities/auth/auth_user.dart';
+import 'package:stoy/domain/entities/auth/auth_user.dart';
 
 abstract class AuthRepository {
   Stream<AuthUser?> get authUser;

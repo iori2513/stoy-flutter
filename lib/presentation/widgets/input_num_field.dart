@@ -32,7 +32,7 @@ class _InputNumFieldState extends State<InputNumField> {
         textAlignVertical: TextAlignVertical.center,
         initialValue: widget.initialValue.toString(),
         onChanged: (String val) {
-          widget.onChangeNum(double.parse(val.isEmpty ? '0' : val) ?? 0);
+          widget.onChangeNum(double.parse(val.isEmpty ? '0' : val));
         },
         cursorColor: AppColor.primaryColor,
         decoration: InputDecoration(

@@ -14,19 +14,19 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
       icon: const Icon(Icons.home),
-      title: ("Home"),
+      title: ('Home'),
       activeColorPrimary: AppColor.primaryColor,
       inactiveColorPrimary: AppColor.grey,
     ),
     PersistentBottomNavBarItem(
       icon: const Icon(Icons.calendar_month),
-      title: ("Record"),
+      title: ('Record'),
       activeColorPrimary: AppColor.primaryColor,
       inactiveColorPrimary: AppColor.grey,
     ),
     PersistentBottomNavBarItem(
       icon: const Icon(Icons.person),
-      title: ("Profile"),
+      title: ('Profile'),
       activeColorPrimary: AppColor.primaryColor,
       inactiveColorPrimary: AppColor.grey,
     ),

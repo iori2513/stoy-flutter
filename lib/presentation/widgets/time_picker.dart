@@ -8,7 +8,7 @@ class TimePicker extends StatefulWidget {
 }
 
 class _TimePickerState extends State<TimePicker> {
-  TimeOfDay _time = TimeOfDay.now();
+  final TimeOfDay _time = TimeOfDay.now();
 
   Future _pickTime(BuildContext context) async {
     final newTime = await showTimePicker(
@@ -24,7 +24,7 @@ class _TimePickerState extends State<TimePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [],
     );
   }
