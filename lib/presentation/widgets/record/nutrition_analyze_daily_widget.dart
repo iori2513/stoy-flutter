@@ -18,7 +18,7 @@ class NutritionAnalyzeDailyWidget extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 220.w,
+            width: 240.w,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -49,18 +49,15 @@ class NutritionAnalyzeDailyWidget extends StatelessWidget {
                                 Container(
                                   width: 10.w,
                                   height: 10.w,
-                                  color: Colors.red,
+                                  color: Colors.blue,
                                 ),
                                 const SizedBox(width: 10),
                                 const Text('タンパク質'),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          const Text('1000kcal'),
                           const Spacer(),
+                          Text('${nutrition.proteinCalorie}kcal'),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -76,15 +73,12 @@ class NutritionAnalyzeDailyWidget extends StatelessWidget {
                                   color: Colors.red,
                                 ),
                                 const SizedBox(width: 10),
-                                const Text('タンパク質'),
+                                const Text('脂質'),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          const Text('1000kcal'),
                           const Spacer(),
+                          Text('${nutrition.fatCalorie}kcal'),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -97,18 +91,15 @@ class NutritionAnalyzeDailyWidget extends StatelessWidget {
                                 Container(
                                   width: 10.w,
                                   height: 10.w,
-                                  color: Colors.red,
+                                  color: Colors.green,
                                 ),
                                 const SizedBox(width: 10),
-                                const Text('タンパク質'),
+                                const Text('炭水化物'),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          const Text('1000kcal'),
                           const Spacer(),
+                          Text('${nutrition.carbohydratesCalorie}kcal'),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -122,11 +113,8 @@ class NutritionAnalyzeDailyWidget extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          const Text('1000kcal'),
                           const Spacer(),
+                          Text('${nutrition.totalCalorie}kcal'),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -147,7 +135,7 @@ class NutritionAnalyzeDailyWidget extends StatelessWidget {
                 sections: [
                   PieChartSectionData(
                     color: Colors.blue,
-                    value: 30,
+                    value: nutrition.proteinCalorie,
                     title: 'タンパク質',
                     radius: 50,
                     titleStyle: const TextStyle(
@@ -157,7 +145,7 @@ class NutritionAnalyzeDailyWidget extends StatelessWidget {
                   ),
                   PieChartSectionData(
                     color: Colors.red,
-                    value: 40,
+                    value: nutrition.fatCalorie,
                     title: '脂質',
                     radius: 50,
                     titleStyle: const TextStyle(
@@ -167,7 +155,7 @@ class NutritionAnalyzeDailyWidget extends StatelessWidget {
                   ),
                   PieChartSectionData(
                     color: Colors.green,
-                    value: 40,
+                    value: nutrition.carbohydratesCalorie,
                     title: '炭水化物',
                     radius: 50,
                     titleStyle: const TextStyle(
