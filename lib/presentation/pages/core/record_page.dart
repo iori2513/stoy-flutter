@@ -6,7 +6,7 @@ import 'package:stoy/presentation/providers/shared/body/body_data_list/body_data
 import 'package:stoy/presentation/providers/shared/diet/diet_list/diet_list_provider.dart';
 import 'package:stoy/presentation/providers/single/record/record_provider.dart';
 import 'package:stoy/presentation/widgets/global_side_bar.dart';
-import 'package:stoy/presentation/widgets/record/record_tab_widget.dart';
+import 'package:stoy/presentation/widgets/record/record_tabs_widget.dart';
 import 'package:stoy/presentation/widgets/weekly_date_picker.dart';
 
 class RecordPage extends ConsumerWidget {
@@ -55,7 +55,7 @@ class RecordPage extends ConsumerWidget {
               height: 120.h,
               child: WeeklyDatePicker(onChangeDate: notifier.onChangeDate)),
           Expanded(
-            child: RecordTabWidget(
+            child: RecordTabsWidget(
                 notifier: notifier,
                 targetDateDietList: targetDateDietList,
                 bodyDataList: targetBodyDataList),
