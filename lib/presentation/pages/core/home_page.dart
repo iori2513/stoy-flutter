@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stoy/constants/app_color.dart';
+import 'package:stoy/domain/entities/body/body.dart';
 import 'package:stoy/domain/entities/diet/diet.dart';
-import 'package:stoy/presentation/pages/diet/diet_detail_page.dart';
+import 'package:stoy/presentation/pages/body/body_data_detail_page.dart';
 import 'package:stoy/presentation/widgets/diet/diet_panel.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,9 +27,9 @@ class HomePage extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DietDetailPage(
-                          Diet.empty(userId: ''),
-                        )));
+                    builder: (context) => BodyDataDetailPage(
+                        bodyData:
+                            Body.empty(userId: '', date: DateTime.now()))));
           },
           child: DietPanel(diet: Diet.empty(userId: '')),
         ));
