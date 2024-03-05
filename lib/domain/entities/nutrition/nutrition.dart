@@ -13,3 +13,17 @@ class Nutrition with _$Nutrition {
   factory Nutrition.empty() =>
       const Nutrition(protein: 0, fat: 0, carbohydrates: 0);
 }
+
+extension NutritionExtension on Nutrition {
+  double get proteinCalorie {
+    return (protein * 4);
+  }
+
+  double get fatCalorie {
+    return (fat * 9);
+  }
+
+  double get carbohydratesCalorie {
+    return (carbohydrates * 4);
+  }
+}
