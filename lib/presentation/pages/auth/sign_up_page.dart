@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
-import 'package:stoy/presentation/providers/shared/auth/auth_provider.dart';
 import 'package:stoy/presentation/providers/single/auth/sign_up/sign_up_provider.dart';
 import 'package:stoy/presentation/widgets/auth/auth_page_title.dart';
 import 'package:stoy/presentation/widgets/outlined_button.dart';
@@ -16,7 +15,6 @@ class SignUpPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(signUpNotifierProvider);
     final notifier = ref.watch(signUpNotifierProvider.notifier);
-    final authStateNotifier = ref.watch(authNotifierProvider.notifier);
     return Scaffold(
       appBar: AppBar(title: const Text('STOY')),
       body: Center(
