@@ -18,7 +18,6 @@ class BodyDataDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.watch(bodyDetailNotifierProvider(bodyData).notifier);
     final state = ref.watch(bodyDetailNotifierProvider(bodyData));
-    final ymdSplit = bodyData.ymd.split('-');
     return Scaffold(
       appBar: AppBar(
         title: Text(
