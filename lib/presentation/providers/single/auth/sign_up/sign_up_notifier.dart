@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:stoy/domain/entities/auth/auth_user.dart';
 import 'package:stoy/domain/use_cases/auth/sign_up_use_case.dart';
 import 'package:stoy/presentation/providers/single/auth/sign_up/sign_up_state.dart';
 
@@ -9,7 +10,7 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
   SignUpNotifier({required this.signUpUseCase})
       : super(const SignUpState.initial());
 
-  Future<void> signUp() async {
+  Future<AuthUser> signUp() async {
     state = state.copyWith(isLoading: true);
     try {
       final user = await signUpUseCase.call(
@@ -17,9 +18,10 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
           password: state.password,
           username: state.username);
       state = state.copyWith(email: '', password: '', username: '');
+      return user;
     } catch (error) {
       state = state.copyWith(errorMessage: error.toString());
-      debugPrint(state.errorMessage);
+      rethrow;
     } finally {
       state = state.copyWith(isLoading: false);
     }

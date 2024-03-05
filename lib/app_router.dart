@@ -10,11 +10,14 @@ class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/signUp':
-        return MaterialPageRoute(builder: (_) => const SignUpPage());
+        return MaterialPageRoute(
+            builder: (_) => const AuthCheck(
+                loggedInScreen: MainPage(), loggedOutScreen: SignUpPage()));
       case '/signIn':
         return MaterialPageRoute(
-          builder: (_) => const SignInPage(),
-        );
+            builder: (_) => const AuthCheck(
+                loggedInScreen: MainPage(), loggedOutScreen: SignInPage()));
+
       case '/main':
         return MaterialPageRoute(builder: (_) => const MainPage());
       case '/home':

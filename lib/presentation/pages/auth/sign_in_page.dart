@@ -6,7 +6,7 @@ import 'package:stoy/presentation/providers/single/auth/sign_in/sign_in_provider
 import 'package:stoy/presentation/widgets/auth/auth_page_title.dart';
 import 'package:stoy/presentation/widgets/outlined_button.dart';
 
-import '../../widgets/auth/auth_text_field.dart';
+import 'package:stoy/presentation/widgets/auth/auth_text_field.dart';
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
@@ -42,7 +42,7 @@ class SignInPage extends ConsumerWidget {
             OutlinedWideButton(
               label: 'signIn',
               color: AppColor.primaryColor,
-              onPressed: () {
+              onPressed: () async {
                 notifier.signIn();
               },
               isLoading: state.isLoading,

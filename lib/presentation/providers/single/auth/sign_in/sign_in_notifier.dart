@@ -12,11 +12,10 @@ class SignInNotifier extends StateNotifier<SignInState> {
   Future<void> signIn() async {
     state = state.copyWith(isLoading: true);
     try {
-      final user = await signInUseCase.call(
-          email: state.email, password: state.password);
+      await signInUseCase.call(email: state.email, password: state.password);
     } catch (error) {
       state = state.copyWith(errorMessage: error.toString());
-      print(error);
+      debugPrint(error.toString());
     } finally {
       state = state.copyWith(isLoading: false);
     }
