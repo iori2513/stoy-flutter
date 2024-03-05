@@ -18,7 +18,8 @@ class BodyDetailNotifier extends StateNotifier<BodyDetailState> {
       Body? bodyData})
       : super(BodyDetailState.initial()) {
     if (bodyData != null) {
-      state = state.copyWith(bodyData: bodyData);
+      state = state.copyWith(
+          bodyData: bodyData.copyWith(userId: authState.user.userId));
     }
   }
 
@@ -45,11 +46,11 @@ class BodyDetailNotifier extends StateNotifier<BodyDetailState> {
             memo: memo ?? state.bodyData.memo));
   }
 
-  Future<void> addDiet(String userId) async {
+  Future<void> addDiet() async {
     return addBodyDataUseCase.call(state.bodyData);
   }
 
-  Future<void> update(String userId) async {
+  Future<void> update() async {
     return updateBodyDataUseCase.call(state.bodyData);
   }
 
@@ -62,20 +63,21 @@ class BodyDetailNotifier extends StateNotifier<BodyDetailState> {
 
   void executeSave({required BuildContext context}) {
     state = state.copyWith(isLoading: true);
-    final userId = authState.user.userId;
     if (_isNewData) {
-      addDiet(userId).then((value) {
+      addDiet().then((value) {
         Navigator.pop(context);
       }).catchError((error) {
         state = state.copyWith(errorMessage: error.toString());
+        print(error);
       }).then((value) {
         state = state.copyWith(isLoading: false);
       });
     } else {
-      update(userId).then((value) {
+      update().then((value) {
         Navigator.pop(context);
       }).catchError((error) {
         state = state.copyWith(errorMessage: error.toString());
+        print(error);
       }).then((value) {
         state = state.copyWith(isLoading: false);
       });

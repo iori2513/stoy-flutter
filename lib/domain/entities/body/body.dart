@@ -25,17 +25,6 @@ class Body with _$Body {
         memo: '',
       );
 
-  Map<String, dynamic> toFirestore() {
-    return {
-      'userId': userId,
-      'weight': weight,
-      'fatPercentage': fatPercentage,
-      'bodyTemp': bodyTemp,
-      'ymd': ymd,
-      'memo': memo,
-    };
-  }
-
   static Body fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
   ) {
@@ -49,5 +38,18 @@ class Body with _$Body {
       ymd: data['ymd'] as String,
       memo: data['memo'] as String,
     );
+  }
+}
+
+extension BodyExtension on Body {
+  Map<String, dynamic> toFirestore() {
+    return {
+      'userId': userId,
+      'weight': weight,
+      'fatPercentage': fatPercentage,
+      'bodyTemp': bodyTemp,
+      'ymd': ymd,
+      'memo': memo,
+    };
   }
 }

@@ -19,8 +19,6 @@ class BodyDataDetailPage extends ConsumerWidget {
     final notifier = ref.watch(bodyDetailNotifierProvider(bodyData).notifier);
     final state = ref.watch(bodyDetailNotifierProvider(bodyData));
     final ymdSplit = bodyData.ymd.split('-');
-    final month = ymdSplit[1];
-    final day = ymdSplit[2];
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -131,6 +129,7 @@ class BodyDataDetailPage extends ConsumerWidget {
                   label: notifier.executeButtonText,
                   color: AppColor.primaryColor,
                   onPressed: () {
+                    print(notifier.authState.user);
                     notifier.executeSave(context: context);
                   },
                   isLoading: state.isLoading,

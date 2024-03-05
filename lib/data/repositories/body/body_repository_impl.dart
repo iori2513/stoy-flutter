@@ -19,6 +19,6 @@ class BodyRepositoryImpl implements BodyRepository {
 
   @override
   Future<void> updateBodyData(Body body) {
-    return remoteDataSource.updateDiet(body: body);
+    return remoteDataSource.updateBodyData(body: body);
   }
 }

@@ -2,11 +2,12 @@ import 'package:stoy/domain/entities/body/body.dart';
 import 'package:stoy/firebase_manager.dart';
 
 class BodyRemoteDataSource {
-  final ref = FirebaseManager.firestore.collection('diets').withConverter<Body>(
+  final ref = FirebaseManager.firestore.collection('body').withConverter<Body>(
       fromFirestore: (snapshot, _) => Body.fromFirestore(snapshot),
       toFirestore: (body, _) => body.toFirestore());
 
   Future<void> addBodyData(Body body) {
+    print(body);
     return ref.add(body);
   }
 
@@ -17,7 +18,7 @@ class BodyRemoteDataSource {
         .map((event) => event.docs.map((e) => e.data()).toList());
   }
 
-  Future<void> updateDiet({required Body body}) {
+  Future<void> updateBodyData({required Body body}) {
     return ref.doc(body.docId).set(body);
   }
 }
