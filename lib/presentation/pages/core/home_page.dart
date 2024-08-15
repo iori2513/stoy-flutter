@@ -10,30 +10,35 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final bodyDataList = ref.watch(bodyDataListNotifierProvider);
+    final state = ref.watch(bodyDataListNotifierProvider);
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('STOY',
-              style: TextStyle(
-                  color: AppColor.primaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20)),
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {},
+      appBar: AppBar(
+        title: const Text('STOY',
+            style: TextStyle(
+                color: AppColor.primaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20)),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {},
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 30.w),
+        child: Center(
+          child: Column(
+            children: [
+              if (state.bodyDataList.isNotEmpty)
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: BodyWeightChart(bodyData: state.bodyDataList),
+                )
+              else
+                const Text('データがありません'),
+            ],
           ),
         ),
-        body: Container(
-          margin: EdgeInsets.only(left: 30.w, right: 30.w),
-          child: Center(
-            child: Column(
-              children: [
-                SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: BodyWeightChart(bodyData: bodyDataList.bodyDataList))
-              ],
-            ),
-          ),
-        ));
+      ),
+    );
   }
 }

@@ -13,7 +13,6 @@ class BodyWeightChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(list());
     return SizedBox(height: 300.h, width: 300.w, child: LineChart(mainData()));
   }
 
