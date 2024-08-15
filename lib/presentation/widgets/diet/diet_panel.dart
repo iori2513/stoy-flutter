@@ -11,7 +11,7 @@ class DietPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 96.h,
+      height: 97.h,
       width: 327.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.h),

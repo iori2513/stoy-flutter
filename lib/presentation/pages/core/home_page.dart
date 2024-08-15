@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stoy/constants/app_color.dart';
-import 'package:stoy/domain/entities/body/body.dart';
-import 'package:stoy/domain/entities/diet/diet.dart';
-import 'package:stoy/presentation/pages/body/body_data_detail_page.dart';
-import 'package:stoy/presentation/widgets/diet/diet_panel.dart';
+import 'package:stoy/presentation/providers/shared/body/body_data_list/body_data_list_provider.dart';
+import 'package:stoy/presentation/widgets/line_chart.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final bodyDataList = ref.watch(bodyDataListNotifierProvider);
     return Scaffold(
         appBar: AppBar(
           title: const Text('STOY',
@@ -22,16 +23,17 @@ class HomePage extends StatelessWidget {
             onPressed: () {},
           ),
         ),
-        body: GestureDetector(
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => BodyDataDetailPage(
-                        bodyData:
-                            Body.empty(userId: '', date: DateTime.now()))));
-          },
-          child: DietPanel(diet: Diet.empty(userId: '')),
+        body: Container(
+          margin: EdgeInsets.only(left: 30.w, right: 30.w),
+          child: Center(
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: BodyWeightChart(bodyData: bodyDataList.bodyDataList))
+              ],
+            ),
+          ),
         ));
   }
 }
