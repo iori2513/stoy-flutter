@@ -14,6 +14,7 @@ class BodyRemoteDataSource {
   Stream<List<Body>> fetchBodyDataList(String userId) {
     return ref
         .where('userId', isEqualTo: userId)
+        .orderBy('ymd')
         .snapshots()
         .map((event) => event.docs.map((e) => e.data()).toList());
   }

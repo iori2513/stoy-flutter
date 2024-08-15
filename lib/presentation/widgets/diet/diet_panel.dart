@@ -11,71 +11,71 @@ class DietPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 96.h,
+      height: 97.h,
       width: 327.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.h),
-        border: Border.all(color: AppColor.borderColor),
-        color: AppColor.backGroundGrey,
-      ),
+      decoration: _buildContainerDecoration(),
       child: Row(
         children: [
-          SizedBox(
-            width: 10.w,
-          ),
-          Container(
-            height: 61.h,
-            width: 82.w,
-            decoration:
-                BoxDecoration(borderRadius: BorderRadius.circular(15.h)),
-            child: diet.photoUrl.isNotEmpty
-                ? Image.network(diet.photoUrl)
-                : const Icon(Icons.no_meals),
-          ),
-          SizedBox(
-            width: 10.w,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 10.h,
-              ),
-              Text(
-                diet.title,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
-              ),
-              SizedBox(
-                height: 5.h,
-              ),
-              Text(
-                'タンパク質: ${diet.nutrition.protein}g',
-                style: const TextStyle(fontSize: 10, color: AppColor.textGrey),
-              ),
-              Text(
-                '脂質: ${diet.nutrition.fat}g',
-                style: const TextStyle(fontSize: 10, color: AppColor.textGrey),
-              ),
-              Text(
-                '炭水化物: ${diet.nutrition.carbohydrates}g',
-                style: const TextStyle(fontSize: 10, color: AppColor.textGrey),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-            ],
-          ),
+          SizedBox(width: 10.w),
+          _buildDietImage(),
+          SizedBox(width: 10.w),
+          _buildDietInfo(),
           const Spacer(),
-          const Icon(
-            Icons.arrow_forward_ios,
-            size: 20,
-          ),
-          SizedBox(
-            width: 20.w,
-          )
+          _buildForwardIcon(),
+          SizedBox(width: 20.w),
         ],
       ),
+    );
+  }
+
+  BoxDecoration _buildContainerDecoration() {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(15.h),
+      border: Border.all(color: AppColor.borderColor),
+      color: AppColor.backGroundGrey,
+    );
+  }
+
+  Widget _buildDietImage() {
+    return Container(
+      height: 61.h,
+      width: 82.w,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.h)),
+      child: diet.photoUrl.isNotEmpty
+          ? Image.network(diet.photoUrl)
+          : const Icon(Icons.no_meals),
+    );
+  }
+
+  Widget _buildDietInfo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 10.h),
+        Text(
+          diet.title,
+          style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+        ),
+        SizedBox(height: 5.h),
+        _buildNutritionInfo('タンパク質', diet.nutrition.protein),
+        _buildNutritionInfo('脂質', diet.nutrition.fat),
+        _buildNutritionInfo('炭水化物', diet.nutrition.carbohydrates),
+        SizedBox(height: 10.h),
+      ],
+    );
+  }
+
+  Widget _buildNutritionInfo(String label, num value) {
+    return Text(
+      '$label: ${value}g',
+      style: const TextStyle(fontSize: 10, color: AppColor.textGrey),
+    );
+  }
+
+  Widget _buildForwardIcon() {
+    return const Icon(
+      Icons.arrow_forward_ios,
+      size: 20,
     );
   }
 }
