@@ -31,7 +31,17 @@ class HomePage extends ConsumerWidget {
               if (state.bodyDataList.isNotEmpty)
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: BodyWeightChart(bodyData: state.bodyDataList),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 30.h),
+                      SizedBox(
+                        child: Text('体重', style: TextStyle(fontSize: 16.sp)),
+                      ),
+                      SizedBox(height: 30.h),
+                      BodyWeightChart(bodyData: state.bodyDataList),
+                    ],
+                  ),
                 )
               else
                 const Text('データがありません'),

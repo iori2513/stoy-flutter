@@ -111,14 +111,33 @@ class BodyWeightChart extends StatelessWidget {
                 );
               },
               showTitles: true, // サイドタイトルの有無
-              interval: 86400000.0 * 3, // サイドタイトルの表示間隔
-              reservedSize: 40.0, // サイドタイトルの表示エリアの幅// サイドタイトルの表示内容
+              interval: 86400000.0 * 7, // 1週間ごとに表示
+              reservedSize: 60.0, // サイドタイトルの表示エリアの幅を広げる
             ),
           ),
-          rightTitles: AxisTitles(),
-          // 上記と同じため割愛
-          topTitles: AxisTitles(),
-          leftTitles: AxisTitles()),
+          leftTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              interval: 10,
+              getTitlesWidget: (double value, TitleMeta meta) {
+                return Text(
+                  '${value.toInt()}',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 10,
+                  ),
+                );
+              },
+              reservedSize: 40,
+            ),
+          ),
+          rightTitles: const AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          topTitles: const AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+        ),
 
       // グラフの外枠線
       borderData: FlBorderData(
