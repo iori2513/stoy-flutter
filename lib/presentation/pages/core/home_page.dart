@@ -36,7 +36,7 @@ class HomePage extends ConsumerWidget {
                     children: [
                       SizedBox(height: 30.h),
                       SizedBox(
-                        child: Text('体重', style: TextStyle(fontSize: 16.sp)),
+                        child: Text('体重', style: TextStyle(fontSize: 24.sp)),
                       ),
                       SizedBox(height: 30.h),
                       BodyWeightChart(bodyData: state.bodyDataList),
